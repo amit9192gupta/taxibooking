@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Details</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+        }
+        th, td {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h2>All Contact Details</h2>
+<div style="text-align:center">
+    <a href="dashboard">Admin Home</a>
+</div>
+<br><br>
+<h2 th:text="${message}"> </h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Message</th>
+            <th>Remove Contact</th>           
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="contact:${allcontacts}">
+            <td th:text="${contact.id}"></td>
+            <td th:text="${contact.name}"></td>
+            <td th:text="${contact.email}"></td>
+            <td th:text="${contact.phone}"></td>
+            <td th:text="${contact.message}"></td>
+            <td>
+            <a th:href="@{/admin/deleteContact/{id} (id=${contact.id})}"> Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
